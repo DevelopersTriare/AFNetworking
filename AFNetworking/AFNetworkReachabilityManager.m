@@ -108,6 +108,10 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
 @property (readwrite, nonatomic, copy) AFNetworkReachabilityStatusBlock networkReachabilityStatusBlock;
 @end
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+#pragma clang diagnostic ignored "-Wno-objc-designated-initializers"
+
 @implementation AFNetworkReachabilityManager
 
 + (instancetype)sharedManager {
@@ -163,6 +167,8 @@ static void AFNetworkReachabilityReleaseCallback(const void *info) {
         _networkReachability = NULL;
     }
 }
+
+#pragma clang diagnostic pop
 
 #pragma mark -
 

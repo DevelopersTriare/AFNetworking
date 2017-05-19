@@ -283,6 +283,9 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
 
 @implementation _AFURLSessionTaskSwizzling
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wnonnull"
+
 + (void)load {
     /**
      WARNING: Trouble Ahead
@@ -334,6 +337,8 @@ static NSString * const AFNSURLSessionTaskDidSuspendNotification = @"com.alamofi
         [localDataTask cancel];
     }
 }
+
+#pragma clang diagnostic pop
 
 + (void)swizzleResumeAndSuspendMethodForClass:(Class)class {
     Method afResumeMethod = class_getInstanceMethod(self, @selector(af_resume));

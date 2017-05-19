@@ -156,6 +156,10 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
 - (void)cancelConnection;
 @end
 
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wobjc-designated-initializers"
+#pragma clang diagnostic ignored "-Wno-objc-designated-initializers"
+
 @implementation AFURLConnectionOperation
 @synthesize outputStream = _outputStream;
 
@@ -217,6 +221,8 @@ static inline BOOL AFStateTransitionIsValid(AFOperationState fromState, AFOperat
     }
 #endif
 }
+
+#pragma clang diagnostic pop
 
 #pragma mark -
 
